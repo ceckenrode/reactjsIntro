@@ -14,49 +14,81 @@
 //creates the HelloWorld component
   var HelloWorld = React.createClass({
 
-//specifies that HelloWorld is a string and is required
+//specifies that HelloWorld has a name prop which is a string and is required
+//specifies that HellowWorld has a isPerson prop that is a bool type, not required
     propTypes: {
         name: React.PropTypes.string,
         isPerson: React.PropTypes.bool
     },
 
 //sets up a default name prop of Charlie if one is not supplied
-    getDefaultProps() {
+    getDefaultProps: function() {
         return {
-            name: 'Charlie'  
+            name: 'Mike'  
         };
+    },
+//sets an initial state value of 1 for this HelloWorld component
+    getInitialState: function() {
+        return {
+              value: 1
+        };
+    },
+
+//is a function that says that when the component mounts, do this thing
+    componentDidMount: function() {
+    
+
+    },
+
+//a function that console logs 'click' and increments the state value of this component by 1
+    _addByOne: function() {
+      console.log('click');
+        this.setState({
+        value: this.state.value + 1
+      })
+
+
     },
 
 //what actually gets rendered to the dom
     render: function() {
+      //sets a variable greeting to World
       var greeting = "World";
 
+//If this prop isPerson = true, then greeting is the component of person with the name prop equal to the name prop passed
+//into the HelloWorld Render
+//We return hello world if not a person, hello name if a person, followed by the value of this state
+//the button created on click calls this._addByOne Method
       if (this.props.isPerson) {
         greeting = (<Person name ={this.props.name} />)
       }
       return (
+        <div>
         <h1>Hello {greeting}</h1>
+        <p>{this.state.value}</p>
+        <button onClick={this._addByOne}>Click Me</button>
+        </div>
       )
     }
 
   });
 
-
+//creates the person component
   var Person = React.createClass({
 
-
+//requires a value
     propTypes: {
         name: React.PropTypes.string.isRequired
     },
 
-
-    getDefaultProps() {
+//sets the default name property to charlie if none is specified
+    getDefaultProps: function() {
         return {
             name: 'Charlie'  
         };
     },
 
-
+//renders this.props.name when used
     render: function() {
       return (
         <span>{this.props.name}</span>
