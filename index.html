@@ -12,6 +12,13 @@
   <script type="text/babel">
 
   var HelloWorld = React.createClass({
+
+    getDefaultProps() {
+        return {
+            name: 'Charlie'  
+        };
+    },
+
     render: function() {
       return (
         <h1>Hello {this.props.name}</h1>
