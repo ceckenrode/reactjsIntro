@@ -1,0 +1,19 @@
+{
+  "name": "reactjsintro",
+  "version": "1.0.0",
+  "description": "Introduction to Reactjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ceckenrode/reactjsIntro.git"
+  },
+  "author": "Christian Eckenrode",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ceckenrode/reactjsIntro/issues"
+  },
+  "homepage": "https://github.com/ceckenrode/reactjsIntro#readme"
+}
