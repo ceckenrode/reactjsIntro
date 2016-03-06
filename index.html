@@ -11,11 +11,39 @@
 
   <script type="text/babel">
 
+//creates the HelloWorld component
   var HelloWorld = React.createClass({
 
+//specifies that HelloWorld is a string and is required
     propTypes: {
-        name: React.PropTypes.string
+        name: React.PropTypes.string,
+        isPerson: React.PropTypes.bool
     },
+
+//sets up a default name prop of Charlie if one is not supplied
+    getDefaultProps() {
+        return {
+            name: 'Charlie'  
+        };
+    },
+
+//what actually gets rendered to the dom
+    render: function() {
+      return (
+        <h1>Hello <Person name={this.props.name} /></h1>
+      )
+    }
+
+  });
+
+
+  var Person = React.createClass({
+
+
+    propTypes: {
+        name: React.PropTypes.string.isRequired
+    },
+
 
     getDefaultProps() {
         return {
@@ -23,16 +51,19 @@
         };
     },
 
+
     render: function() {
       return (
-        <h1>Hello {this.props.name}</h1>
+        <span>{this.props.name}</span>
       )
     }
 
   });
 
+//the render method is called on the ReactDOM, this renders the HelloWorld component and passes a name prop of Christian
+//it also says that this will get appended to the element with an idea of area
     ReactDOM.render(
-      <HelloWorld name="Christian" />,
+      <HelloWorld name="Christian" isPerson={true} />,
       document.getElementById('area')
     );
   </script>
